@@ -2,6 +2,11 @@
 import RPi.GPIO as GPIO
 import serial
 
+import serial.tools.list_ports
+plist = list(serial.tools.list_ports.comports())
+for port in list( plist ):
+    print port
+
 EN_485 =  4
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(EN_485,GPIO.OUT)
