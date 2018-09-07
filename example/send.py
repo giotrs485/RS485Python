@@ -2,6 +2,16 @@
 import RPi.GPIO as GPIO
 import serial
 
+
+def hexShow(argv):   
+    result = ''   
+    hLen = len(argv)   
+    for i in xrange(hLen):   
+        hvol = ord(argv[i])   
+        hhex = '%02x'%hvol   
+        result += hhex+' '   
+    print 'hexShow:',result  
+
 EN_485 =  4
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(EN_485,GPIO.OUT)
@@ -16,17 +26,11 @@ ser = serial.Serial("/dev/ttyS0",9600,timeout=0.5)
 # print str   
 
 while True:
-    print ser.portstr
+    print 'listen'
     str = ser.readall()
-    print str 
     # str = raw_input('enter some words:')
     if str:
-	print 'get %s' % str
-	print type(str)
-	f = open('res.txt', 'a')
-	f.write(str)
-	f.close()
-        n = ser.write(str)
+	    hexShow(str)
     else:
-	print 'no input'    
+	    print 'no input'    
 
