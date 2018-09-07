@@ -5,7 +5,8 @@ import serial
 
 def hexShow(argv):   
     result = ''   
-    hLen = len(argv)   
+    hLen = len(argv)
+    print hLen   
     for i in xrange(hLen):   
         hvol = ord(argv[i])   
         hhex = '%02x'%hvol   
@@ -17,7 +18,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(EN_485,GPIO.OUT)
 GPIO.output(EN_485,GPIO.LOW)
 
-ser = serial.Serial("/dev/ttyS0",9600,timeout=0.5)    
+ser = serial.Serial("/dev/ttyS0",19200,timeout=0.5)    
 # print t.portstr    
 # strInput = raw_input('enter some words:')    
 # n = t.write(strInput)    
