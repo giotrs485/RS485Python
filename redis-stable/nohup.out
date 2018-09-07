@@ -1,0 +1,16 @@
+19607:C 06 Sep 21:56:38.532 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+19607:C 06 Sep 21:56:38.532 # Redis version=4.0.11, bits=64, commit=796cca86, modified=1, pid=19607, just started
+19607:C 06 Sep 21:56:38.532 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+19607:M 06 Sep 21:56:38.535 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+19607:M 06 Sep 21:56:38.537 * Running mode=standalone, port=6379.
+19607:M 06 Sep 21:56:38.537 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+19607:M 06 Sep 21:56:38.537 # Server initialized
+19607:M 06 Sep 21:56:38.537 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+19607:M 06 Sep 21:56:38.537 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+19607:M 06 Sep 21:56:38.537 * DB loaded from disk: 0.000 seconds
+19607:M 06 Sep 21:56:38.538 * Ready to accept connections
+19611:C 06 Sep 21:56:46.430 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+19611:C 06 Sep 21:56:46.430 # Redis version=4.0.11, bits=64, commit=796cca86, modified=1, pid=19611, just started
+19611:C 06 Sep 21:56:46.430 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+19611:M 06 Sep 21:56:46.431 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+19611:M 06 Sep 21:56:46.431 # Creating Server TCP listening socket *:6379: bind: Address already in use
