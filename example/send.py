@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import RPi.GPIO as GPIO
 import serial
-
+import binascii
 
 def hexShow(argv):   
     result = ''   
@@ -10,7 +10,12 @@ def hexShow(argv):
         hvol = ord(argv[i])   
         hhex = '%02x'%hvol   
         result += hhex+' '   
-    print 'hexShow:',result  
+    return result 
+
+def str2hex(str):
+    s=binascii.unhexlify(str)
+    b=[ord(x) for x in s]
+    return b
 
 EN_485 =  4
 GPIO.setmode(GPIO.BCM)
@@ -30,7 +35,10 @@ while True:
     str = ser.readall()
     # str = raw_input('enter some words:')
     if str:
-	    hexShow(str)
+        str = hexShow(str)
+        print 'get %s' % str
+        str = str2hex(str)
+        ser.write(serial.to_bytes(str))
     else:
 	    print 'no input'    
 
