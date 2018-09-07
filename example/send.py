@@ -2,6 +2,7 @@
 import RPi.GPIO as GPIO
 import serial
 import binascii
+import time
 
 def hexShow(argv):   
     result = ''   
@@ -23,7 +24,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(EN_485,GPIO.OUT)
 GPIO.output(EN_485,GPIO.LOW)
 
-ser = serial.Serial("/dev/ttyS0",19200,timeout=0.5)    
+ser = serial.Serial("/dev/ttyS0",19200,timeout=1)    
 # print t.portstr    
 # strInput = raw_input('enter some words:')    
 # n = t.write(strInput)    
@@ -38,8 +39,12 @@ while True:
     if str:
         str = hexShow(str)
         print 'get %s' % str
-        str = str2hex(str)
-        ser.write(serial.to_bytes(str))
+        # str = str2hex(str)
+	# str = bytearray.fromhex(str)
+	print 'send %s' % str
+        # ser.write(serial.to_bytes(str))
+	ser.write(str)
+	time.sleep(10)
     else:
 	    print 'no input'    
 
