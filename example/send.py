@@ -29,6 +29,6 @@ ser = serial.Serial("/dev/ttyS0",19200,timeout=1)
 while True:
     strInput = raw_input('enter some words:')    
     n = ser.write(strInput)        
-    str = t.read(n)    
+    str = ser.read(n)    
     print str   
 
