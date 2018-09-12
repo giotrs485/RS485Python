@@ -40,11 +40,11 @@ while True:
         str = hexShow(str)
         print 'get %s' % str
         # str = str2hex(str)
-	# str = bytearray.fromhex(str)
-	print 'send %s' % str
-        # ser.write(serial.to_bytes(str))
-	ser.write(str)
-	time.sleep(10)
+	    # str = bytearray.fromhex(str)
+	    print 'send %s' % str
+        ser.write(serial.to_bytes(str))
+	    # ser.write(str)
+	    time.sleep(10)
     else:
 	    print 'no input'    
 
