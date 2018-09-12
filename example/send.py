@@ -25,26 +25,10 @@ GPIO.setup(EN_485,GPIO.OUT)
 GPIO.output(EN_485,GPIO.LOW)
 
 ser = serial.Serial("/dev/ttyS0",19200,timeout=1)    
-# print t.portstr    
-# strInput = raw_input('enter some words:')    
-# n = t.write(strInput)    
-# print n    
-# str = t.read(n)    
-# print str   
-
+  
 while True:
-    print 'listen'
-    str = ser.readall()
-    # str = raw_input('enter some words:')
-    if str:
-        str = hexShow(str)
-        print 'get %s' % str
-        # str = str2hex(str)
-	    # str = bytearray.fromhex(str)
-	    print 'send %s' % str
-        ser.write(serial.to_bytes(str))
-	    # ser.write(str)
-	    time.sleep(10)
-    else:
-	    print 'no input'    
+    strInput = raw_input('enter some words:')    
+    n = ser.write(strInput)        
+    str = t.read(n)    
+    print str   
 
