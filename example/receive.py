@@ -12,5 +12,5 @@ while True:
     str = ser.readall()  
     if str:  
         print str
-        ser.write(str)
+        ser.write('res for ' + str)
 
