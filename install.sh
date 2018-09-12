@@ -1,3 +1,6 @@
+sudo apt-get update
+sudo apt-get install vim
+
 pip install websocket-client
 
 sudo apt-get install python-smbus
