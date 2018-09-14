@@ -36,7 +36,6 @@ while True:
     if str:
         str = hexShow(str)
         print 'get %s' % str
-        str = str2hex(str)
         ser.write(serial.to_bytes(str))
     else:
 	    print 'no input'    
