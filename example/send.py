@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import serial
 import binascii
+import time
 
 def hex2Str(argv):
     result = ''   
@@ -23,7 +24,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(EN_485,GPIO.OUT)
 GPIO.output(EN_485,GPIO.LOW)
 
-ser = serial.Serial("/dev/ttyS0",19200,timeout=20)    
+ser = serial.Serial("/dev/ttyS0",19200,timeout=1)    
 # print t.portstr    
 # strInput = raw_input('enter some words:')    
 # n = t.write(strInput)    
@@ -39,6 +40,4 @@ while True:
         print 'get %s' % str
         str = str2Hex(str)
         print 'write %s' % str
-        # ser.write(serial.to_bytes(str))
-        ser.write('1')
-        sleep(1)
+      
