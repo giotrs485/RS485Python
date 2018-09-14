@@ -2,17 +2,18 @@ import websocket
 import thread
 import time
 
+from config import Config 
 from redis_queue import RedisQueue
 from websocket import create_connection, WebSocket
 
 websocket.enableTrace(True)
 
-HOST = 'ws://127.0.0.1:8080'
+HOST = Config.SOCKET_HOST
 
 class SocketWorker:
     def __init__(self):
-        self.command_queue = RedisQueue('command_queue')
-        self.result_queue = RedisQueue('result_queue')
+        self.command_queue = RedisQueue(Config.DOWN_QUEUE_NAME)
+        self.result_queue = RedisQueue(Config.UP_QUEUE_NAME)
         
         self.socket = websocket.WebSocketApp( 
             HOST, 

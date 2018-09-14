@@ -47,3 +47,18 @@ tar -xzvf spidev.tar.gz -C ./spidev --strip-components 1
 rm -rf spidev.tar.gz
 cd spidev
 sudo python setup.py install
+
+# redis
+sudo apt-get install build-essential tcl
+wget http://download.redis.io/redis-stable.tar.gz
+tar xzvf redis-stable.tar.gz
+cd redis-stable
+make
+make test
+sudo make install
+sudo mkdir /etc/redis
+
+echo 'supervised systemd' > temp
+cat redis.conf >> temp
+sudo cp redis.conf /etc/redis
+sudo cp configure/redis.service /etc/systemd/system/
