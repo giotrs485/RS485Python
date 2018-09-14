@@ -31,7 +31,9 @@ ser = serial.Serial("/dev/ttyS0",19200,timeout=2)
 # str = t.read(n)    
 # print str   
 
-while True:
+got = True
+
+while got:
     str = ser.readall()
     # str = raw_input('enter some words:')
     if str:
@@ -40,3 +42,4 @@ while True:
         str = str2Hex(str)
         print 'write %s' % str
         ser.write(serial.to_bytes(str))
+        got = False
