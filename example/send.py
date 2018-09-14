@@ -9,11 +9,6 @@ GPIO.output(EN_485,GPIO.HIGH)
 
 ser = serial.Serial("/dev/ttyS0",19200)
 
-print t.portstr    
-strInput = raw_input('enter some words:')    
-n = t.write(strInput)    
-print n
-
 def str2Hex(str):
     str = str.replace(' ', '')
     hex_values = ['0x' + str[i:i+2] for i in range(0, len(str), 2)]
