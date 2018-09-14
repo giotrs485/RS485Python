@@ -20,7 +20,7 @@ rm -rf wiringpi.tar.gz
 cd wiringpi
 chmod 777 build
 ./build
-cd ..
+cd ..         
 
 mkdir bcm2835
 wget http://206.189.166.192/bcm2835.tar.gz
