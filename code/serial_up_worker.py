@@ -6,14 +6,14 @@ from datetime import datetime
 from redis_queue import RedisQueue
 from config import Config
 
-EN_485 =  Config.EN_485
+EN_485 = Config.EN_485
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(EN_485,GPIO.OUT)
 GPIO.output(EN_485,GPIO.LOW)
 
 class SerialUpWorker:
     def __init__(self):
-        self.secr = serial.Serial("/dev/ttyS0", Config.BAUD_RATE, timeout= 1)
+        self.secr = serial.Serial("/dev/ttyS0", Config.BAUD_RATE, timeout=Config.SERIAL_UP_CYC)
         self.result_queue = RedisQueue(Config.UP_QUEUE_NAME)
         self.start()
     
@@ -25,10 +25,9 @@ class SerialUpWorker:
     def execTask(self):
         result = self.secr.readall()
         if result:
-            print 'get result %s' % result
-            self.result_queue.put( self.hex2Str(result) )
-        else:
-            print 'no result'
+			result = self.hex2Str(result)
+			print 'get result %s' % result
+            self.result_queue.put(result)
     
     def hex2Str(self, argv):
         result = ''   
