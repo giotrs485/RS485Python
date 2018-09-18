@@ -23,18 +23,18 @@ class Test:
 			result = self.hex2Str(result)
 			print 'get %s' % result
     
-    def hex2Str(self, argv):
-        result = ''   
+	def hex2Str(self, argv):
+		result = ''   
         hLen = len(argv)
         print hLen   
         for i in xrange(hLen):   
             hvol = ord(argv[i])   
             hhex = '%02x'%hvol   
-            result += hhex+' '   
-        return result 
+            result += hhex+' '
+		return result 
 
-    def str2Hex(self, str):
-        str = str.replace(' ', '')
+	def str2Hex(self, str):
+		str = str.replace(' ', '')
         hex_values = ['0x' + str[i:i+2] for i in range(0, len(str), 2)]
         int_values = [int(h, base=16) for h in hex_values]
         return int_values

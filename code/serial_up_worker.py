@@ -26,7 +26,7 @@ class SerialUpWorker:
         if result:
 			result = self.hex2Str(result)
 			print 'get result %s' % result
-            self.result_queue.put(result)
+			self.result_queue.put(result)
     
     def hex2Str(self, argv):
         result = ''   
@@ -43,3 +43,5 @@ class SerialUpWorker:
         hex_values = ['0x' + str[i:i+2] for i in range(0, len(str), 2)]
         int_values = [int(h, base=16) for h in hex_values]
         return int_values
+
+
