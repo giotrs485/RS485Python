@@ -62,7 +62,7 @@ sudo mkdir /etc/redis
 
 echo 'supervised systemd' > temp
 cat redis.conf >> temp
-sudo cp redis.conf /etc/redis
+sudo cp ../../configure/redis.conf /etc/redis
 sudo cp ../../configure/redis.service /etc/systemd/system/
 
 sudo systemctl start redis
