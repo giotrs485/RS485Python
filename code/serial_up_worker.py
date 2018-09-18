@@ -27,6 +27,8 @@ class SerialUpWorker:
         if result:
             print 'get result %s' % result
             self.result_queue.put( self.hex2Str(result) )
+        else:
+            print 'no result'
     
     def hex2Str(self, argv):
         result = ''   
