@@ -24,9 +24,9 @@ class SerialUpWorker:
     def execTask(self):
         result = self.secr.readall()
         if result:
-			result = self.hex2Str(result)
-			print 'get result %s' % result
-			self.result_queue.put(result)
+          result = self.hex2Str(result)
+          print 'get result %s' % result
+          self.result_queue.put(result)
     
     def hex2Str(self, argv):
         result = ''   
