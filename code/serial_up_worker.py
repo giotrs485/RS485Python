@@ -13,7 +13,7 @@ GPIO.output(EN_485,GPIO.LOW)
 
 class SerialUpWorker:
     def __init__(self):
-        self.secr = serial.Serial("/dev/ttyS0",Config.BAUD_RATE)
+        self.secr = serial.Serial("/dev/ttyS0", Config.BAUD_RATE, timeout= 1)
         self.result_queue = RedisQueue(Config.UP_QUEUE_NAME)
         self.start()
     

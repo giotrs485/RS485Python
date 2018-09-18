@@ -3,7 +3,8 @@ sudo apt-get update
 sudo apt-get install vim
 
 # python libs
-pip install websocket-client
+sudo pip install redis
+sudo pip install websocket-client
 
 sudo apt-get install python-smbus
 sudo apt-get install python-serial
