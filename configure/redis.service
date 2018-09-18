@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=redis
 Group=redis
-ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf
+ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf --supervised systemd
 ExecStop=/usr/local/bin/redis-cli shutdown
 Restart=always
 
