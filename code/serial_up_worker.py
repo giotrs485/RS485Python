@@ -20,7 +20,6 @@ class SerialUpWorker:
     def start(self):
         while True:
             self.execTask()
-            # time.sleep(Config.SERIAL_UP_CYC)
     
     def execTask(self):
         result = self.secr.readall()
