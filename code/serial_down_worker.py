@@ -29,7 +29,6 @@ class SerialDownWorker:
             command = self.str2Hex(command)
         else:
             # write normal check command
-            print 'no command, query'
             command = self.str2Hex('0000000000')
 
         self.secr.write( serial.to_bytes(command) )

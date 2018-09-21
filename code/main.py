@@ -1,12 +1,15 @@
-import thread
-
+from threading import Thread
 from serial_up_worker import SerialUpWorker
 from serial_down_worker import SerialDownWorker
 from socket_worker import SocketWorker
 
-thread1 = thread.start_new_thread(SerialUpWorker, ())
-thread2 = thread.start_new_thread(SerialDownWorker, ())
-thread3 = thread.start_new_thread(SocketWorker, ())
+thread1 = Thread(target=SerialUpWorker)
+thread2 = Thread(target=SerialDownWorker)
+thread3 = Thread(target=SocketWorker)
+
+thread1.start()
+thread2.start()
+thread3.start()
 
 thread1.join()
 thread2.join()
