@@ -8,4 +8,4 @@ class Config:
     DOWN_QUEUE_NAME = 'command_queue'
     UP_QUEUE_NAME = 'result_queue'
 
-    SOCKET_HOST = 'ws://127.0.0.1:8080'
+    SOCKET_HOST = 'ws://206.189.166.192:8080'

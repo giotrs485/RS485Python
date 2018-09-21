@@ -70,6 +70,10 @@ sudo mkdir /var/lib/redis
 sudo chown redis:redis /var/lib/redis
 sudo chmod 770 /var/lib/redis
 
+sudo systemctl enable redis
 sudo systemctl start redis
 sudo systemctl status redis
-sudo systemctl enable redis
+
+redis-cli
+config set stop-writes-on-bgsave-error no
+exit

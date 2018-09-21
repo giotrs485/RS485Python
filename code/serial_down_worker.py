@@ -6,13 +6,12 @@ from datetime import datetime
 from redis_queue import RedisQueue
 from config import Config
 
-EN_485 =  Config.EN_485
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(EN_485,GPIO.OUT)
-GPIO.output(EN_485,GPIO.HIGH)
-
 class SerialDownWorker:
     def __init__(self):
+        EN_485 = Config.EN_485
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(Config.EN_485, GPIO.OUT)
+        GPIO.output(Config.EN_485, GPIO.HIGH)
         self.secr = serial.Serial("/dev/ttyS0", Config.BAUD_RATE)
         self.command_queue = RedisQueue(Config.DOWN_QUEUE_NAME)
         self.start()
