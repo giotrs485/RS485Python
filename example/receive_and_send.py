@@ -35,4 +35,4 @@ while True:
         GPIO.output(EN_485,GPIO.HIGH)
         port.write( str2Hex('02') )
         print 'send 02'
-    time.sleep(1)
+    time.sleep(0.5)
