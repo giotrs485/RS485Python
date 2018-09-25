@@ -74,6 +74,4 @@ sudo systemctl enable redis
 sudo systemctl start redis
 sudo systemctl status redis
 
-redis-cli
-config set stop-writes-on-bgsave-error no
-exit
+echo 'config set stop-writes-on-bgsave-error no' | redis-cli

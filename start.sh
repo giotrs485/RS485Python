@@ -1,0 +1,1 @@
+echo 'config set stop-writes-on-bgsave-error no' | redis-cli
