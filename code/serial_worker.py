@@ -27,8 +27,9 @@ class SerialWorker:
         if not command:
             command = '0'
         
-        print 'write to 485 %s' % command
         command = self.str2Hex(command)
+        self.port.write(command)
+        print 'write to 485 %s' % command
 
         GPIO.output(Config.EN_485,GPIO.LOW)
         result = self.port.readall()
