@@ -35,3 +35,4 @@ while True:
     if result:
         result = hex2Str(result)
         print 'receive %s' % result
+    sleep(1)
