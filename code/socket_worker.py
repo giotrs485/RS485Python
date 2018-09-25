@@ -56,5 +56,6 @@ class SocketWorker:
             self.socket.send(result)
         
 
-
+if __name__ == "__main__":
+    SocketWorker()
     
