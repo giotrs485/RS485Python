@@ -30,7 +30,8 @@ class RedisQueue(object):
             item = self.__db.lpop(self.key)
 
         if item:
-            print item
+            print 'get no wait %s' % item
+            print item[1]
             item = item[1]
         return item
 
