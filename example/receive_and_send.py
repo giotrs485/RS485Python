@@ -21,24 +21,17 @@ def str2Hex(str):
 
 EN_485 = 4
 GPIO.setmode(GPIO.BCM)
+GPIO.setup(EN_485,GPIO.OUT)
 
 while True:
-    GPIO.setup(EN_485,GPIO.OUT)
     GPIO.output(EN_485,GPIO.LOW)
 
-    receive_serial = serial.Serial("/dev/ttyS0",19200,timeout=1)
-    result = receive_serial.readall()
-    receive_serial.close()
+    serial = serial.Serial("/dev/ttyS0",19200,timeout=1)
+    result = serial.readall()
 
     if result:
         result = hex2Str(result)
         print 'receive %s' % result
-
-        GPIO.setup(EN_485,GPIO.OUT)
         GPIO.output(EN_485,GPIO.HIGH)
-        
-        send_serial = serial.Serial("/dev/ttyS0",19200)
-        send_serial.write( str2Hex('11') )
-        send_serial.close()
-
+        serial.write( str2Hex('11') )
         print 'send 11'
