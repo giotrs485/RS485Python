@@ -27,7 +27,6 @@ while True:
     GPIO.output(EN_485,GPIO.LOW)
 
     receive_serial = serial.Serial("/dev/ttyS0",19200,timeout=1)
-    receive_serial.open()
     result = receive_serial.readall()
     receive_serial.close()
 
@@ -39,7 +38,6 @@ while True:
         GPIO.output(EN_485,GPIO.HIGH)
         
         send_serial = serial.Serial("/dev/ttyS0",19200)
-        send_serial.open()
         send_serial.write( str2Hex('11') )
         send_serial.close()
 
