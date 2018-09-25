@@ -30,7 +30,7 @@ while True:
     GPIO.output(EN_485,GPIO.LOW)
     result = port.readall()
     if result:
-        result = hex2Str(result)
+        # result = hex2Str(result)
         print 'receive %s' % result
         GPIO.output(EN_485,GPIO.HIGH)
         port.write( str2Hex('11') )
