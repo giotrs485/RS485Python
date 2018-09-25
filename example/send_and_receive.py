@@ -28,8 +28,8 @@ port = serial.Serial("/dev/ttyS0", 19200, timeout=1)
 
 while True:
     GPIO.output(EN_485,GPIO.HIGH)
-    port.write( str2Hex('00') )
-    print 'send 00'
+    port.write( str2Hex('01') )
+    print 'send 01'
     GPIO.output(EN_485,GPIO.LOW)
     result = port.readall()
     if result:

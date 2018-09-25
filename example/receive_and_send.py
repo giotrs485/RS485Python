@@ -33,6 +33,6 @@ while True:
         result = hex2Str(result)
         print 'receive %s' % result
         GPIO.output(EN_485,GPIO.HIGH)
-        port.write( str2Hex('11') )
-        print 'send 11'
+        port.write( str2Hex('02') )
+        print 'send 02'
     time.sleep(1)
