@@ -4,6 +4,9 @@ import serial
 from config import Config
 from redis_queue import RedisQueue
 
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(Config.EN_485,GPIO.OUT)
+
 class SerialUpWorker:
   def __init__(self):
     GPIO.setmode(GPIO.BCM)
