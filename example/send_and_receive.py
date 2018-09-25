@@ -24,7 +24,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(EN_485,GPIO.OUT)
 GPIO.output(EN_485,GPIO.HIGH)
 
-port = serial.Serial("/dev/ttyS0", 19200, timeout=1)
+port = serial.Serial("/dev/ttyS0", 115200, timeout=1)
 
 while True:
     GPIO.output(EN_485,GPIO.HIGH)

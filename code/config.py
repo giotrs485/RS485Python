@@ -1,6 +1,6 @@
 class Config:
     EN_485 = 4
-    BAUD_RATE = 19200
+    BAUD_RATE = 115200
 
     SERIAL_CYC = 1
     SERIAL_WAIT = 1
