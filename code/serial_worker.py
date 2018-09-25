@@ -12,13 +12,13 @@ class SerialWorker:
     def __init__(self):
         self.result_queue = RedisQueue(Config.UP_QUEUE_NAME)
         self.command_queue = RedisQueue(Config.DOWN_QUEUE_NAME)
-        self.port = serial.Serial("/dev/ttyS0", Config.BAUD_RATE, timeout=Config.SERIAL_UP_CYC)
+        self.port = serial.Serial("/dev/ttyS0", Config.BAUD_RATE, timeout=Config.SERIAL_WAIT)
         self.start()
     
     def start(self):
         while True:
             self.executeTask()
-            time.sleep(Config.SERIAL_UP_CYC)
+            time.sleep(Config.SERIAL_CYC)
 
     def executeTask(self):
         GPIO.output(Config.EN_485,GPIO.HIGH)
