@@ -16,6 +16,6 @@ class CommandHelper(object):
         print len(command)
         for i in range(len(command)):
             print command[i]
-            print int(command[i], 32)
+            print int(command[i], 16)
         # command = bytes.fromhex(command)
         return command
