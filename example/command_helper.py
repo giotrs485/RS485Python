@@ -14,7 +14,8 @@ class CommandHelper(object):
     
     @staticmethod
     def toReadable( command ):
-        print command.encode('utf-8')
+        print map(bin,bytearray(command))
+        # print command.encode('utf-8')
         # print len(command)
         # for i in range(len(command)):
         #     print command[i]
