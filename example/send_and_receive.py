@@ -22,5 +22,6 @@ while True:
     result = port.readall()
     if result:
         # result = CommandHelper.toReadable(result)
+        print type(result)
         print 'receive %s' % result
     time.sleep(1)

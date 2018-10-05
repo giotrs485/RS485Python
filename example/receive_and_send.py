@@ -19,6 +19,7 @@ while True:
     result = port.readall()
     if result:
         # result = CommandHelper.toReadable(result)
+        print type(result)
         print 'receive %s' % result
         GPIO.output(EN_485,GPIO.HIGH)
         print 'send %s' % test_command
