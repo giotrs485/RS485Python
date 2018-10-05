@@ -3,6 +3,8 @@ import serial
 import binascii
 import time
 
+test_command = '00 AA BB CC'
+
 def hex2Str(argv):
     result = ''   
     hLen = len(argv)
@@ -33,6 +35,6 @@ while True:
         result = hex2Str(result)
         print 'receive %s' % result
         GPIO.output(EN_485,GPIO.HIGH)
-        port.write( str2Hex('02') )
-        print 'send 02'
+        port.write( str2Hex(test_command) )
+        print 'send 00'
     time.sleep(0.5)
