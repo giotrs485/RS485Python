@@ -23,4 +23,4 @@ while True:
         GPIO.output(EN_485,GPIO.HIGH)
         print 'send %s' % test_command
         port.write( CommandHelper.toWriteable(test_command) )
-    time.sleep(0.5)
+    time.sleep(1)
