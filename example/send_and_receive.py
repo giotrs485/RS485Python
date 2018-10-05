@@ -3,23 +3,25 @@ import serial
 import binascii
 import time
 
-test_command = '00 AA BB CC'
+from command_helper import CommandHelper
 
-def hex2Str(argv):
-    result = ''   
-    hLen = len(argv)
-    print hLen   
-    for i in xrange(hLen):   
-        hvol = ord(argv[i])   
-        hhex = '%02x'%hvol   
-        result += hhex+' '   
-    return result 
+test_command = '00 AA BB CC FF'
 
-def str2Hex(str):
-    str = str.replace(' ', '')
-    hex_values = ['0x' + str[i:i+2] for i in range(0, len(str), 2)]
-    int_values = [int(h, base=16) for h in hex_values]
-    return int_values
+# def hex2Str(argv):
+#     result = ''   
+#     hLen = len(argv)
+#     print hLen   
+#     for i in xrange(hLen):   
+#         hvol = ord(argv[i])   
+#         hhex = '%02x'%hvol   
+#         result += hhex+' '   
+#     return result 
+
+# def str2Hex(str):
+#     str = str.replace(' ', '')
+#     hex_values = ['0x' + str[i:i+2] for i in range(0, len(str), 2)]
+#     int_values = [int(h, base=16) for h in hex_values]
+#     return int_values
 
 EN_485 = 4
 GPIO.setmode(GPIO.BCM)
@@ -30,11 +32,11 @@ port = serial.Serial("/dev/ttyS0", 115200, timeout=1)
 
 while True:
     GPIO.output(EN_485,GPIO.HIGH)
-    port.write( str2Hex( test_command ) )
+    port.write( CommandHelper.toWriteable( test_command ) )
     print 'send 00'
     GPIO.output(EN_485,GPIO.LOW)
     result = port.readall()
     if result:
-        result = hex2Str(result)
+        result = CommandHelper.toReadable(result)
         print 'receive %s' % result
     time.sleep(1)
