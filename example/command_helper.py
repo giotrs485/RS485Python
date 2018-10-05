@@ -15,8 +15,7 @@ class CommandHelper(object):
     @staticmethod
     def toReadable( command ):
         result = ''   
-        hLen = len(command)
-        print hLen   
+        hLen = len(command) 
         for i in xrange(hLen):   
             hvol = ord(command[i])   
             hhex = '%02x'%hvol   
