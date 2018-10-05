@@ -1,5 +1,7 @@
 
-class CommandHelper:
+class CommandHelper(object):
+
+    @staticmethod
     def toWriteable( command ):
         arr = []
         command = command.replace(' ', '')
@@ -11,6 +13,7 @@ class CommandHelper:
             arr.append(byte_val)
         return arr
     
+    @staticmethod
     def toReadable( command ):
         print command
         return command

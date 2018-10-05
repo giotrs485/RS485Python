@@ -1,5 +1,6 @@
 
-class CommandHelper:
+class CommandHelper(object):
+
     @staticmethod
     def toWriteable( command ):
         arr = []
