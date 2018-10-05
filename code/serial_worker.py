@@ -4,9 +4,11 @@ import time
 
 from config import Config
 from redis_queue import RedisQueue
+from binascii import unhexlify
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(Config.EN_485,GPIO.OUT)
+GPIO.setup(22, GPIO.IN)
 
 class SerialWorker:
     def __init__(self):
@@ -25,9 +27,15 @@ class SerialWorker:
 
         command = self.command_queue.get_nowait()
         if not command:
-            command = '0'
+            # command = [01, 04, 00, 01, 00, 16, 20, 04]
+            # command = bytearray.fromhex('0104000100162004')
+			# command = '\x01\x04\x00\x01\x00\x16\x20\x04'
+            # command = unhexlify('0104000100162004') 
+            # command = serial.to_bytes([0x01, 0x04, 0x00, 0x01, 0x00, 0x16, 0x20, 0x04])
+            command = '\xe0\x00\x00\x00\x00\xfc\x00\x80\x00\x00\x00\x3f\x00\x00\x00\x00\x00\xfc\xf0\x00\x00\x00\x00\xfc\x00\x00\x00\x00\x00\xf0\x00\xfe\xe0\x00\x80\x00\x00\
+x00\xc0\x00\x7e\x00\xc0\x00\x00\x00\xff'
         
-        command = self.str2Hex(command)
+        # command = self.str2Hex(command)
         self.port.write(command)
         print 'write to 485 %s' % command
 
