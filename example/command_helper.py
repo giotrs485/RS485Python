@@ -14,13 +14,11 @@ class CommandHelper(object):
     
     @staticmethod
     def toReadable( command ):
-        # print map(bin,bytearray(command))
-        # print command.encode('utf-8')
-        # print len(command)
-        for i in range(len(command)):
-            print ord(command[i])
-        #     print type(command[i])
-            # struct.unpack("h", command[i])
-            # print int(command[i], 16)
-        # command = bytes.fromhex(command)
-        return command
+        result = ''   
+        hLen = len(command)
+        print hLen   
+        for i in xrange(hLen):   
+            hvol = ord(command[i])   
+            hhex = '%02x'%hvol   
+            result += hhex+' '   
+        return result 
