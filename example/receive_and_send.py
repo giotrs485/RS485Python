@@ -5,7 +5,7 @@ import time
 
 from command_helper import CommandHelper
 
-test_command = 'AA'
+test_command = '00'
 
 EN_485 = 4
 GPIO.setmode(GPIO.BCM)
