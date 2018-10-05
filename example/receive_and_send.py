@@ -16,11 +16,14 @@ port = serial.Serial("/dev/ttyS0",115200,timeout=1)
 
 while True:
     GPIO.output(EN_485,GPIO.LOW)
+    time.sleep(1)
     result = port.readall()
     if result:
         result = CommandHelper.toReadable(result)
         print 'receive %s' % result
+
         GPIO.output(EN_485,GPIO.HIGH)
+        time.sleep(1)
         print 'send %s' % test_command
         port.write( CommandHelper.toWriteable(test_command) )
-    time.sleep(5)
+    time.sleep(1)
