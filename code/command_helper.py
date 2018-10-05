@@ -13,5 +13,6 @@ class CommandHelper(object):
     
     @staticmethod
     def toReadable( command ):
-        command = bytes.fromhex(command)
+        print len(command)
+        # command = bytes.fromhex(command)
         return command

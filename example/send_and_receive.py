@@ -21,7 +21,6 @@ while True:
     GPIO.output(EN_485,GPIO.LOW)
     result = port.readall()
     if result:
-        # result = CommandHelper.toReadable(result)
-        print type(result)
+        result = CommandHelper.toReadable(result)
         print 'receive %s' % result
     time.sleep(1)
