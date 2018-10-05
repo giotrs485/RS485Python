@@ -1,3 +1,4 @@
+import struct
 
 class CommandHelper(object):
 
@@ -16,6 +17,7 @@ class CommandHelper(object):
         print len(command)
         for i in range(len(command)):
             print command[i]
-            print int(command[i], 16)
+            struct.unpack("h", command[i])
+            # print int(command[i], 16)
         # command = bytes.fromhex(command)
         return command
