@@ -21,7 +21,7 @@ while True:
     port.write(command)
 
     while port.out_waiting > 0:
-        print port.out_waiting
+        print '%s waiting' % port.out_waiting
         time.sleep(0.1)
 
     GPIO.output(EN_485,GPIO.LOW)
@@ -30,4 +30,4 @@ while True:
         result = CommandHelper.toReadable(result)
         print 'receive %s' % result
 
-    time.sleep(5)
+    time.sleep(1)

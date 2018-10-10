@@ -26,4 +26,6 @@ while True:
         command = CommandHelper.toWriteable(test_command)
         port.write( command )
         
-    time.sleep(1)
+        while port.out_waiting > 0:
+            print '%s waiting' % port.out_waiting
+            time.sleep(0.1)
