@@ -20,7 +20,9 @@ while True:
     command = CommandHelper.toWriteable( test_command )
     port.write(command)
 
-    print port.out_waiting
+    while port.out_waiting > 0：
+        print port.out_waiting
+        time.sleep(0.1)
 
     GPIO.output(EN_485,GPIO.LOW)
     result = port.readall()
