@@ -10,7 +10,7 @@ class CommandHelper(object):
             int_val = int( command[i:i+2], 16 )
             byte_val = chr( int_val )
             arr.append(byte_val)
-        return arr.join('')
+        return ''.join(arr)
     
     @staticmethod
     def toReadable( command ):
