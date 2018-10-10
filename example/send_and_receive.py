@@ -20,10 +20,10 @@ while True:
     print 'send %s' % test_command
     command = CommandHelper.toWriteable( test_command )
 	
-    # for i in range( len(command) ):	
-    #   port.write( command[i] )
-    #   time.sleep(1)
-    port.write(command)
+    for i in range( len(command) ):	
+      port.write( command[i] )
+      time.sleep(1)
+    # port.write(command)
 
     GPIO.output(EN_485,GPIO.LOW)
     result = port.readall()
