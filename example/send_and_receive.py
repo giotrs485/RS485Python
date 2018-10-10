@@ -12,7 +12,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(EN_485,GPIO.OUT)
 GPIO.output(EN_485,GPIO.HIGH)
 
-port = serial.Serial("/dev/ttyS0", 115200, parity = serial.PARITY_NONE, stopbits = serial.STOPBITS_ONE, bytesize = serial.EIGHTBITS, timeout=None)
+port = serial.Serial("/dev/ttyS0", 115200, parity = serial.PARITY_NONE, stopbits = serial.STOPBITS_ONE, bytesize = serial.EIGHTBITS, timeout=1)
 
 while True:
     GPIO.output(EN_485,GPIO.HIGH)
