@@ -12,7 +12,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(EN_485,GPIO.OUT)
 GPIO.output(EN_485,GPIO.HIGH)
 
-port = serial.Serial("/dev/ttyS0", 115200, timeout=1)
+port = serial.Serial("/dev/ttyS0", 115200, parity = serial.PARITY_NONE, stopbits = serial.STOPBITS_ONE, bytesize = serial.EIGHTBITS, timeout=1)
 port.setRTS(1)
 port.setDTR(1)
 
@@ -21,10 +21,6 @@ while True:
 
     print 'send %s' % test_command
     command = CommandHelper.toWriteable( test_command )
-	
-    # for i in range( len(command) ):	
-    #   port.write( command[i] )
-    #   time.sleep(1)
     port.write(command)
 
     GPIO.output(EN_485,GPIO.LOW)
