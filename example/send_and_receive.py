@@ -19,8 +19,7 @@ while True:
 
     print 'send %s' % test_command
     command = CommandHelper.toWriteable( test_command )
-    res = port.write(command)
-    print 'send res %s' % res
+    port.write(command)
 
     GPIO.output(EN_485,GPIO.LOW)
     result = port.readall()
@@ -28,4 +27,4 @@ while True:
         result = CommandHelper.toReadable(result)
         print 'receive %s' % result
 
-    time.sleep(10)
+    time.sleep(5)
