@@ -28,4 +28,4 @@ while True:
         result = CommandHelper.toReadable(result)
         print 'receive %s' % result
 
-    time.sleep(5)
+    time.sleep(10)
