@@ -2,7 +2,7 @@ class Config:
     EN_485 = 4
     BAUD_RATE = 9600
 
-    SERIAL_CYC = 10
+    SERIAL_CYC = 5
     SERIAL_WAIT = 1
 
     DOWN_QUEUE_NAME = 'command_queue'
