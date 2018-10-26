@@ -3,18 +3,21 @@ import serial
 import time
 
 from config import Config
+from command_helper import CommandHelper
 from redis_queue import RedisQueue
 from binascii import unhexlify
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(Config.EN_485,GPIO.OUT)
-GPIO.setup(22, GPIO.IN)
+GPIO.setup(Config.EN_485, GPIO.OUT)
+GPIO.setup(Config.EN_485, GPIO.HIGH)
+
+DEFAULT_COMMAND = '01 04 00 01 00 16 20 04'
 
 class SerialWorker:
     def __init__(self):
         self.result_queue = RedisQueue(Config.UP_QUEUE_NAME)
         self.command_queue = RedisQueue(Config.DOWN_QUEUE_NAME)
-        self.port = serial.Serial("/dev/ttyS0", Config.BAUD_RATE, timeout=Config.SERIAL_WAIT)
+        self.port = serial.Serial("/dev/ttyS0", 9600, parity = serial.PARITY_NONE, stopbits = serial.STOPBITS_ONE, bytesize = serial.EIGHTBITS, timeout = Config.SERIAL_WAIT)
         self.start()
     
     def start(self):
@@ -27,41 +30,23 @@ class SerialWorker:
 
         command = self.command_queue.get_nowait()
         if not command:
-            # command = [01, 04, 00, 01, 00, 16, 20, 04]
-            # command = bytearray.fromhex('0104000100162004')
-			# command = '\x01\x04\x00\x01\x00\x16\x20\x04'
-            # command = unhexlify('0104000100162004') 
-            # command = serial.to_bytes([0x01, 0x04, 0x00, 0x01, 0x00, 0x16, 0x20, 0x04])
-            command = '\xe0\x00\x00\x00\x00\xfc\x00\x80\x00\x00\x00\x3f\x00\x00\x00\x00\x00\xfc\xf0\x00\x00\x00\x00\xfc\x00\x00\x00\x00\x00\xf0\x00\xfe\xe0\x00\x80\x00\x00\
-x00\xc0\x00\x7e\x00\xc0\x00\x00\x00\xff'
+            command = DEFAULT_COMMAND
         
-        # command = self.str2Hex(command)
-        self.port.write(command)
         print 'write to 485 %s' % command
+
+        command = CommandHelper.toWriteable( command )
+        self.port.write(command)
+
+        while self.port.out_waiting > 0:
+            time.sleep(0.01)
 
         GPIO.output(Config.EN_485,GPIO.LOW)
         result = self.port.readall()
 
         if result:
-            result = self.hex2Str(result)
+            result = CommandHelper.toReadable(result)
             print 'receive from 485 %s' % result
             self.result_queue.put(result)
-    
-    def hex2Str(self, argv):
-        result = ''   
-        hLen = len(argv)
-        print hLen   
-        for i in xrange(hLen):   
-            hvol = ord(argv[i])   
-            hhex = '%02x'%hvol   
-            result += hhex+' '   
-        return result 
-
-    def str2Hex(self, str):
-        str = str.replace(' ', '')
-        hex_values = ['0x' + str[i:i+2] for i in range(0, len(str), 2)]
-        int_values = [int(h, base=16) for h in hex_values]
-        return int_values
 
 if __name__ == "__main__":
     SerialWorker()

@@ -1,4 +1,3 @@
-
 class CommandHelper(object):
 
     @staticmethod
@@ -9,9 +8,15 @@ class CommandHelper(object):
             int_val = int( command[i:i+2], 16 )
             byte_val = chr( int_val )
             arr.append(byte_val)
+        # return ''.join(arr)
         return arr
     
     @staticmethod
     def toReadable( command ):
-        command = bytes.fromhex(command)
-        return command
+        result = ''   
+        hLen = len(command) 
+        for i in xrange(hLen):   
+            hvol = ord(command[i])   
+            hhex = '%02x'%hvol   
+            result += hhex+' '   
+        return result 
