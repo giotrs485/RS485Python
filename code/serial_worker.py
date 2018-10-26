@@ -9,7 +9,7 @@ from binascii import unhexlify
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(Config.EN_485, GPIO.OUT)
-GPIO.setup(Config.EN_485, GPIO.HIGH)
+GPIO.output(Config.EN_485, GPIO.HIGH)
 
 DEFAULT_COMMAND = '01 04 00 01 00 16 20 04'
 
