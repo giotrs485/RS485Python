@@ -23,8 +23,6 @@ class SocketWorker:
             on_close = self.on_close
         )
 
-        self.socket.send(json.dumps({'type':'verify','data':'device'}))
-
         while True:
             try:
                 self.socket.run_forever(ping_interval=100)
@@ -34,6 +32,7 @@ class SocketWorker:
     
     def on_open(self):
         print 'socket connected'
+        self.socket.send(json.dumps({'type':'verify','data':'device'}))
         thread.start_new_thread(self.start, ())
 
     def on_error(self, error):
