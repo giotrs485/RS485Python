@@ -45,6 +45,7 @@ class SocketWorker:
             message = json.loads(message)
             self.handle_message(message)
         except Exception as e:
+            print e
             print 'message parse fail'
 
     def handle_message(self, message):
