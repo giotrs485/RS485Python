@@ -22,8 +22,8 @@ while True:
         print 'receive %s' % result
         GPIO.output(EN_485,GPIO.HIGH)
         
-        print 'send %s' % test_command
-        command = CommandHelper.toWriteable(test_command)
+        print 'send %s' % result
+        command = CommandHelper.toWriteable(result)
         port.write( command )
         
         while port.out_waiting > 0:
