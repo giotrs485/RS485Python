@@ -49,8 +49,8 @@ class SocketWorker:
             print 'message parse fail'
 
     def handle_message(self, message):
-        if message.type == 'message':
-            self.command_queue.put(message.data)
+        if message['type'] == 'message':
+            self.command_queue.put(message['data'])
 
     def on_close(self):
         print 'socket close'
