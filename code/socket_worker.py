@@ -1,6 +1,7 @@
 import websocket
 import thread
 import time
+import json
 
 from config import Config 
 from redis_queue import RedisQueue
@@ -22,6 +23,8 @@ class SocketWorker:
             on_close = self.on_close
         )
 
+        self.socket.send(json.dumps({'type':'verify','data':'device'}))
+
         while True:
             try:
                 self.socket.run_forever(ping_interval=100)
@@ -38,8 +41,15 @@ class SocketWorker:
 
 
     def on_message(self, message):
-        print 'socket get command %s' % message
-        self.command_queue.put(message)
+        print 'socket get message %s' % message
+        try:
+            self.handle_message(message)
+        except Exception as e:
+            print 'message parse fail'
+
+    def handle_message(self, message):
+        if message.type == 'message':
+            self.command_queue.put(message.data)
 
     def on_close(self):
         print 'socket close'
@@ -53,7 +63,7 @@ class SocketWorker:
         result = self.result_queue.get_nowait()
         if result:
             print 'socket send result %s' % result
-            self.socket.send(result)
+            self.socket.send(json.dumps({'type':'message','data':result}))
         
 
 if __name__ == "__main__":
