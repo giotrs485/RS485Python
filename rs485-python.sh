@@ -3,10 +3,9 @@ exec 2> /home/lijian/Code/RS485Python/logs/rc.local.log
 exec 1>&2
 set -x
 
-while !(127.0.0.1:6379 ping)
-do
-   sleep 3
-   echo "waiting for redis ..."
+while ! nc -z 127.0.0.1 6379; do   
+  sleep 0.1
+  echo "waiting for redis ..."
 done
 
 echo 'config set stop-writes-on-bgsave-error no' | redis-cli
