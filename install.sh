@@ -75,3 +75,9 @@ sudo systemctl start redis
 sudo systemctl status redis
 
 echo 'config set stop-writes-on-bgsave-error no' | redis-cli
+
+# system service
+sudo cp rs485-python.sh /etc/init.d/rs485-python.sh
+sudo update-rc.d /etc/init.d/rs485-python.sh defaults 99
+sudo chmod +x start.sh
+sudo chmod +x /etc/init.d/rs485-python.sh
