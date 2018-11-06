@@ -1,0 +1,39 @@
+--- request header ---
+GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 206.189.166.192:8080
+Origin: http://206.189.166.192:8080
+Sec-WebSocket-Key: cgB5BAA10I2bagi0CaH1ZA==
+Sec-WebSocket-Version: 13
+
+
+-----------------------
+--- response header ---
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: i+psQr1fMKeW0AYFi2+4a234V+o=
+-----------------------
+socket connected
+send: '\x81\xa4\x8b\xe2v\xd0\xf0\xc0\x12\xb1\xff\x83T\xea\xab\xc0\x12\xb5\xfd\x8b\x15\xb5\xa9\xceV\xf2\xff\x9b\xsend: '\x89\x80A\xd8\xb1`'
+send: '\x89\x80q.j\xaa'
+send: '\x89\x801\xd7]\xf3'
+send: '\x89\x80\x9a\xed/\x07'
+send: '\x89\x80\x10\x1f1\xaf'
+send: '\x89\x80\xc0Pm\xe9'
+send: '\x89\x80\xfb\xbc`5'
+send: '\x89\x80\x1b\t\xbb\x98'
+send: '\x89\x80\xff\xa3\xb7|'
+send: '\x89\x80\xad\x81\xe0\xf1'
+send: '\x89\x80iBX4'
+send: '\x89\x80u\xda\x0f\x92'
+send: '\x89\x80\\g\xbb\xbf'
+send: '\x89\x80\xe58\xb0\xbd'
+send: '\x89\x80?^\xa2\n'
+send: '\x89\x80\xe2!S`'
+xed`'
+'
+send: '\x89\x80\x1b;\xedl'
+ '\x89\x80\xsend: "\x8send: '\x89\x80+zcT'send: '\x89\x80!\x81Sp'
+f'

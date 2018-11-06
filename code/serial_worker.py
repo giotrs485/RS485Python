@@ -11,7 +11,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(Config.EN_485, GPIO.OUT)
 GPIO.output(Config.EN_485, GPIO.HIGH)
 
-DEFAULT_COMMAND = '01 04 00 01 00 16 20 04'
+DEFAULT_COMMAND = '01 04 00 00 00 46 71 F8'
 
 class SerialWorker:
     def __init__(self):
