@@ -78,6 +78,5 @@ echo 'config set stop-writes-on-bgsave-error no' | redis-cli
 
 # system service
 sudo cp rs485-python.sh /etc/init.d/rs485-python.sh
-sudo chmod +x start.sh
 sudo chmod +x /etc/init.d/rs485-python.sh
 sudo update-rc.d rs485-python.sh defaults 99
