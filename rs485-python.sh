@@ -1,13 +1,13 @@
 #! /bin/sh -e
+exec 2> /home/lijian/Code/RS485Python/logs/rc.local.log 
+exec 1>&2
+set -x
+
 while !(127.0.0.1:6379 ping)
 do
    sleep 3
    echo "waiting for redis ..."
 done
-
-exec 2> /home/lijian/Code/RS485Python/logs/rc.local.log 
-exec 1>&2
-set -x
 
 echo 'config set stop-writes-on-bgsave-error no' | redis-cli
 ps aux | grep -ie nohup | awk '{print $2}' | sudo xargs kill -9
