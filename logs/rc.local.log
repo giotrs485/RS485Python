@@ -1,0 +1,21 @@
++ nc -z 127.0.0.1 6379
++ sleep 0.1
++ echo waiting for redis ...
+waiting for redis ...
++ nc -z 127.0.0.1 6379
++ sleep 0.1
++ echo waiting for redis ...
+waiting for redis ...
++ nc -z 127.0.0.1 6379
++ sleep 0.1
++ echo waiting for redis ...
+waiting for redis ...
++ nc -z 127.0.0.1 6379
++ echo config set stop-writes-on-bgsave-error no
++ redis-cli
+OK
++ echo exit
+exit
++ exit 0
++ exec nohup /usr/bin/python2.7 -u /home/lijian/Code/RS485Python/code/socket_worker.py
++ exec nohup /usr/bin/python2.7 -u /home/lijian/Code/RS485Python/code/serial_worker.py
