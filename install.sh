@@ -1,6 +1,7 @@
 # system requirements
 sudo apt-get update
 sudo apt-get install vim
+sudo -H pip install -U pip
 
 # python libs
 sudo pip install redis

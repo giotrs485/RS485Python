@@ -6,7 +6,6 @@ import json
 
 from config import Config 
 from redis_queue import RedisQueue
-from websocket import create_connection, WebSocket
 
 websocket.enableTrace(True)
 HOST = Config.SOCKET_HOST
