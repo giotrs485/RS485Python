@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import serial
 import time
+import datetime
 
 from config import Config
 from command_helper import CommandHelper
@@ -50,4 +51,5 @@ class SerialWorker:
 
 if __name__ == "__main__":
     SerialWorker()
+    print 'serial worker weak up at %s' % datetime.date.today()
     

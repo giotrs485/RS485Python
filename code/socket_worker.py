@@ -1,6 +1,7 @@
 import websocket
 import thread
 import time
+import datetime
 import json
 
 from config import Config 
@@ -69,4 +70,5 @@ class SocketWorker:
 
 if __name__ == "__main__":
     SocketWorker()
+    print 'socket worker weak up at %s' % datetime.date.today()
     
