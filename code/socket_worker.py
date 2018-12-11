@@ -32,7 +32,7 @@ class SocketWorker:
     
     def on_open(self):
         print 'socket connected'
-        self.socket.send(json.dumps({'type':'verify','data':'device'}))
+        self.socket.send(json.dumps({'type':'verify','data':'device', 'id': self.getserial()}))
         thread.start_new_thread(self.start, ())
 
     def on_error(self, error):
@@ -65,6 +65,19 @@ class SocketWorker:
         if result:
             print 'socket send result %s' % result
             self.socket.send(json.dumps({'type':'message','data':result}))
+    
+    def getserial(self):
+        cpuserial = "0000000000000000"
+        try:
+            f = open('/proc/cpuinfo','r')
+            for line in f:
+            if line[0:6]=='Serial':
+                cpuserial = line[10:26]
+            f.close()
+        except:
+            cpuserial = "ERROR000000000"
+
+        return cpuserial
         
 
 if __name__ == "__main__":
