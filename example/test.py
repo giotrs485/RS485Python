@@ -1,6 +1,15 @@
-import struct
-from command_helper import CommandHelper
+def getserial():
+    cpuserial = "0000000000000000"
+    try:
+        f = open('/proc/cpuinfo','r')
+        for line in f:
+            print line
+            if line[0:6]=='Serial':
+                cpuserial = line[10:26]
+        f.close()
+    except:
+        cpuserial = "ERROR000000000"
 
-temp = CommandHelper.toWriteable('aa')
+    return cpuserial
 
-print type(temp)
+print getserial()
