@@ -1,0 +1,4 @@
+  File "socket_worker.py", line 74
+    if line[0:6]=='Serial':
+     ^
+IndentationError: expected an indented block
