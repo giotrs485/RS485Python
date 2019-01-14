@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="90b2", RUN+="/bin/bash -c 'modprobe option && echo 05c6 90b2 > /sys/bus/usb-serial/drivers/option1/new_id'"ZZ
