@@ -48,6 +48,9 @@ class SerialWorker:
             result = CommandHelper.toReadable(result)
             print 'receive from 485 %s' % result
             self.result_queue.put(result)
+        else:
+            print 'no result'
+            self.result_queue.put(DEFAULT_COMMAND)
 
 if __name__ == "__main__":
     SerialWorker()
