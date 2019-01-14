@@ -51,6 +51,8 @@ class SocketWorker:
     def handle_message(self, message):
         if message['type'] == 'message':
             self.command_queue.put(message['data'])
+        else if message['type'] == 'unverified':
+            self.socket.send(json.dumps({'type':'verify','data':'device', 'id': self.getSerial()}))
 
     def on_close(self):
         print 'socket close'
