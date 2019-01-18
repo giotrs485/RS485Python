@@ -13,9 +13,11 @@ GPIO.setup(Config.EN_485, GPIO.OUT)
 GPIO.output(Config.EN_485, GPIO.HIGH)
 
 DEFAULT_COMMAND = '01 04 00 00 00 46 71 F8'
+DEFAULT_COMMAND2 = '01 04 80 00 00 23 98 13'
 
 class SerialWorker:
     def __init__(self):
+        self.trigger = False
         self.result_queue = RedisQueue(Config.UP_QUEUE_NAME)
         self.command_queue = RedisQueue(Config.DOWN_QUEUE_NAME)
         self.port = serial.Serial("/dev/ttyS0", 9600, parity = serial.PARITY_NONE, stopbits = serial.STOPBITS_ONE, bytesize = serial.EIGHTBITS, timeout = Config.SERIAL_WAIT)
@@ -31,7 +33,11 @@ class SerialWorker:
 
         command = self.command_queue.get_nowait()
         if not command:
-            command = DEFAULT_COMMAND
+            self.trigger = not self.trigger
+            if self.trigger:
+                command = DEFAULT_COMMAND
+            else:
+                command = DEFAULT_COMMAND2
         
         print 'write to 485 %s' % command
 
